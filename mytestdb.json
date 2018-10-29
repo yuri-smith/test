@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "name": "user001",
+      "id": 1,
+      "cityId": 1
+    },
+    {
+      "name": "user002",
+      "cityId": 1,
+      "id": 2
+    },
+    {
+      "name": "user003",
+      "id": 3,
+      "cityId": 2
+    },
+    {
+      "name": "user004",
+      "cityId": 2,
+      "id": 4
+    },
+    {
+      "name": "user555",
+      "cityId": 1,
+      "email": "ddddddddddd",
+      "id": 5
+    },
+    {
+      "name": "user666",
+      "cityId": 2,
+      "id": 6
+    },
+    {
+      "name": "user777",
+      "cityId": 1,
+      "id": 7
+    },
+    {
+      "name": "user888",
+      "cityId": 2,
+      "id": 8
+    },
+    {
+      "name": "user012",
+      "cityId": 2,
+      "id": 9
+    }
+  ],
+  "cities": [
+    {
+      "id": 1,
+      "name": "city001",
+      "tmpr": 10
+    },
+    {
+      "id": 2,
+      "name": "city0044",
+      "tmpr": 13
+    },
+    {
+      "name": "Челябинск",
+      "tmpr": 9.4,
+      "shr": 55.15402,
+      "id": 3,
+      "dtt": "2018-10-25 14:25",
+      "dlg": 61.42915
+    }
+  ]
+}

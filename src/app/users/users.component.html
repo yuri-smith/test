@@ -1,0 +1,85 @@
+<div *ngIf="!cloneUser">Выбери строку!</div>
+<div *ngIf="cloneUser">
+  <!-- <form action="Режимы:"> -->
+    <label><input type="radio" (click)="mode = 0" [checked]="mode === 0">Show</label>
+    <label><input type="radio" (click)="mode = 1" [checked]="mode === 1">Edit</label>
+    <label><input type="radio" (click)="onAdd()" [checked]="mode === 2">Add</label>
+    {{mode}}
+  <!-- </form> -->
+</div>
+<div class="panel" *ngIf="cloneUser">
+  <div class="panel" *ngIf="mode === 0">
+    <div class="form-group">
+      <div class="col-sm-8">
+        <input class="form-control" [(ngModel)]="cloneUser.id" placeholder = "id" disabled />
+        <input class="form-control" [(ngModel)]="cloneUser.name" placeholder = "Имя" disabled />
+        <input class="form-control" [(ngModel)]="city.name" placeholder = "Город" disabled />
+        <input class="form-control" [(ngModel)]="cloneUser.email" placeholder = "Email" disabled />
+      </div>
+    </div>
+  </div>
+  <div class="panel" *ngIf="mode === 1">
+    <div class="form-group">
+      <div class="col-sm-8">
+        <input class="form-control" [(ngModel)]="cloneUser.id" placeholder = "id" readonly />
+        <input class="form-control" [(ngModel)]="cloneUser.name" placeholder = "Имя" />
+        <select class="form-control" [(ngModel)]="cityName" id="_city">
+          <option *ngFor="let city of cities" name="_city">{{city.name}}</option>
+        </select>
+        <input class="form-control" [(ngModel)]="cloneUser.email" placeholder = "Email" />
+        <button class="btn btn-default" (click)="cancel()">cancel</button>
+        <button class="btn btn-default" (click)="save()">save</button>
+        <button class="btn btn-default" (click)="delete()">delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel" *ngIf="mode === 2">
+    <div class="form-group">
+      <div class="col-sm-8">
+        <input class="form-control" [(ngModel)]="cloneUser.id" placeholder = "id" readonly />
+        <input class="form-control" [(ngModel)]="cloneUser.name" placeholder = "Имя" />
+        <!-- <input class="form-control" [(ngModel)]="cloneUser.cityId" placeholder = "Город" /> -->
+        <select class="form-control" [(ngModel)]="city.name" id="_city1">
+          <option *ngFor="let city of cities" name="_city1">{{city.name}}</option>
+        </select>
+        <input class="form-control" [(ngModel)]="cloneUser.email" placeholder = "Email" />
+        <button class="btn btn-default" (click)="cancel()">cancel</button>
+        <button class="btn btn-default" (click)="save()">save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table table-striped" [mfData]="users" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead>
+    <tr>
+      <th style="width: 10%">
+        <mfDefaultSorter by="id">ID</mfDefaultSorter>
+      </th>
+      <th style="width: 30%">
+        <mfDefaultSorter by="name">Имя</mfDefaultSorter>
+      </th>
+      <th style="width: 30%">
+        <mfDefaultSorter by=".city.name">Город</mfDefaultSorter>
+      </th>
+      <th style="width: 30%">
+        <mfDefaultSorter by="email">Email</mfDefaultSorter>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of mf.data" (click)="onSelect(user)">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.city.name}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+</tfoot>
+</table>
+
